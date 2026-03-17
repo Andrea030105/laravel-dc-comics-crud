@@ -1,0 +1,12 @@
+@use "./partials/header" as *;
+@use "./partials/main" as *;
+@use "./partials/footer" as *;
+@use "./partials/comic" as *;
+
+@import "~bootstrap/scss/bootstrap";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
