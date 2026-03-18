@@ -22,6 +22,11 @@
                     <button class="btn btn-primary text-uppercase fw-bold">
                         Loaded More
                     </button>
+                    <a href="{{ route( 'comics.create' ) }}">
+                        <button class="ms-3 btn btn-primary text-uppercase fw-bold">
+                            Added New Comic
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>

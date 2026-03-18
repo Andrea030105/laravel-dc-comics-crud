@@ -23,7 +23,9 @@ class ComicController extends Controller
      */
     public function create()
     {
-        //
+        $header_menu = config('db.menu');
+        $footer_menu = config('db.footerMenu');
+        return view('comics/create', compact('header_menu', 'footer_menu'));
     }
 
     /**
