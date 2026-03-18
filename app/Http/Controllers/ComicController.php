@@ -56,7 +56,7 @@ class ComicController extends Controller
     {
         $header_menu = config('db.menu');
         $footer_menu = config('db.footerMenu');
-        $detail_comic = Comic::find($id);
+        $detail_comic = Comic::findOrFail($id);
         return view('comics/show', compact('detail_comic', 'header_menu', 'footer_menu'));
     }
 
@@ -65,7 +65,10 @@ class ComicController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $header_menu = config('db.menu');
+        $footer_menu = config('db.footerMenu');
+        $detail_comic = Comic::findOrFail($id);
+        return view('comics/edit', compact('detail_comic', 'header_menu', 'footer_menu'));
     }
 
     /**

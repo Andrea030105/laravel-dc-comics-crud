@@ -5,6 +5,13 @@
     <div class="img-banner">
         <img src="{{ $detail_comic['thumb']}}" alt="{{ $detail_comic['title'] }}">
     </div>
+    <div class="btn-banner">
+        <a href="{{ route('comics.edit', [ 'comic'=> $detail_comic->id ]) }}">
+            <button class="ms-3 btn btn-success text-uppercase fw-bold">
+                edit comic
+            </button>
+        </a>
+    </div>
 </div>
 <section class="p-3">
     <div class="container">
