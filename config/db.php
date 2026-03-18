@@ -4,33 +4,43 @@ return [
     'menu' => [
         [
             'text' => 'Characters',
+            'route' => '#',
         ],
         [
             'text' => 'Comics',
+            'route' => 'comics',
         ],
         [
             'text' => 'Movies',
+            'route' => '#',
         ],
         [
             'text' => 'Tv',
+            'route' => '#',
         ],
         [
             'text' => 'Games',
+            'route' => '#',
         ],
         [
             'text' => 'Collectibles',
+            'route' => '#',
         ],
         [
             'text' => 'Videos',
+            'route' => '#',
         ],
         [
             'text' => 'Fans',
+            'route' => '#',
         ],
         [
             'text' => 'News',
+            'route' => '#',
         ],
         [
             'text' => 'Shop',
+            'route' => '#',
         ],
     ],
     'footerMenu' => [

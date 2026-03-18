@@ -11,7 +11,11 @@
                         <ul class="navbar-nav">
                             @foreach($header_menu as $item)
                             <li class="nav-item fw-bold text-uppercase">
+                                @if($item['route'] === '#')
                                 <a class="nav-link active" aria-current="page" href="#">{{$item['text']}}</a>
+                                @else
+                                <a class="nav-link active" aria-current="page" href="{{ route($item['route']) }}">{{$item['text']}}</a>
+                                @endif
                             </li>
                             @endforeach
                         </ul>
