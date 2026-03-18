@@ -39,7 +39,10 @@ class ComicController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $header_menu = config('db.menu');
+        $footer_menu = config('db.footerMenu');
+        $detail_comic = Comic::find($id);
+        return view('comics/show', compact('detail_comic', 'header_menu', 'footer_menu'));
     }
 
     /**

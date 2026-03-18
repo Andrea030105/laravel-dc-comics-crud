@@ -7,10 +7,11 @@
         <div class="row p-2">
             @foreach($comics as $comic)
             <div class="card-comic m-2" style="width: 12rem;">
-                <img class="card-img-top" src="{{ $comic['thumb'] }}" alt="">
-                <div class="text-center text-white p-3">
-                    <h5 class="fs-5">{{ $comic['title'] }}</h5>
-                </div>
+                <a href="{{ route( 'comics.show', $comic->id ) }}">
+                    <img class="card-img-top" src="{{ $comic['thumb'] }}" alt="">
+                    <div class="text-center text-white p-3">
+                        <h5 class="fs-5">{{ $comic['title'] }}</h5>
+                    </div>
                 </a>
             </div>
             @endforeach
