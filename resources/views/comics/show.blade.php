@@ -11,6 +11,14 @@
                 edit comic
             </button>
         </a>
+        <form action="{{ route('comics.destroy', [ 'comic'=> $detail_comic->id ]) }}" method="post">
+            @csrf
+
+            @method('DELETE')
+            <button class="ms-3 btn btn-danger text-uppercase fw-bold">
+                delite comic
+            </button>
+        </form>
     </div>
 </div>
 <section class="p-3">
