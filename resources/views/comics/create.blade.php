@@ -3,6 +3,21 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <div class="col">
+            @if ($errors->any())
+            <div class="alert alert-danger my-3">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>
+                        {{ $error }}
+                    </li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+        </div>
+    </div>
+    <div class="row">
         <div class="col m-3">
             <form action="{{ route( 'comics.store' ) }}" method="POST">
                 @csrf

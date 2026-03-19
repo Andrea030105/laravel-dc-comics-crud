@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Comic;
 
 class ComicController extends Controller
@@ -33,7 +34,8 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $this->validation($request->all());
+
         $newComic = new Comic();
         /* $newComic->slug = $data['slug'];
         $newComic->title = $data['title'];
@@ -79,7 +81,8 @@ class ComicController extends Controller
     public function update(Request $request, string $id)
     {
         $comic = Comic::findOrFail($id);
-        $form_data = $request->all();
+        $form_data = $this->validation($request->all());
+
         $comic->update($form_data);
         return redirect()->route('comics.show', $comic->id);
     }
@@ -92,5 +95,53 @@ class ComicController extends Controller
         $comic = Comic::findOrFail($id);
         $comic->delete();
         return redirect()->route('comics.index');
+    }
+
+    private function validation($data)
+    {
+        $validator = Validator::make(
+            $data,
+            [
+                'slug' => 'required|max:255',
+                'title' => 'required|max:255',
+                'description' => 'required',
+                'thumb' => 'required|max:500',
+                'price' => 'required|decimal:6,2',
+                'series' => 'required|max:255',
+                'sale_date' => 'required',
+                'type' => 'required|max:50',
+                'artists' => 'required',
+                'writers' => 'required',
+            ],
+            [
+                'slug.required' => 'Lo SLUG è obbligatorio',
+                'slug.max' => 'Lo SLUG non può essere superiore a :max caratteri',
+
+                'title.required' => 'Il TITOLO è obbligatorio',
+                'title.max' => 'Il TITOLO non può essere superiore a :max caratteri',
+
+                'description.required' => 'La DESCRIZIONE è obbligatorio',
+
+                'thumb.required' => 'La THUMB è obbligatorio',
+                'thumb.max' => 'La THUMB non può essere superiore a :max caratteri',
+
+                'price.required' => 'Il PREZZO è obbligatorio',
+
+                'series.required' => 'Le SERIE è obbligatorio',
+                'series.max' => 'Le SERIE non può essere superiore a :max caratteri',
+
+                'sale_date.required' => 'Il SALE DATE è obbligatorio',
+
+                'type.required' => 'Il TYPE è obbligatorio',
+                'type.max' => 'Il TYPE non può essere superiore a :max caratteri',
+
+                'artists.required' => 'Gli ARTISTS è obbligatorio',
+                'artists.max' => 'Gli ARTISTS non può essere superiore a :max caratteri',
+
+                'writers.required' => 'I WRITERS è obbligatorio',
+                'writers.max' => 'I WRITERS non può essere superiore a :max caratteri',
+            ]
+        )->validate();
+        return $validator;
     }
 }
